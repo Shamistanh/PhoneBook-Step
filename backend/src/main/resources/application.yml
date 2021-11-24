@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    url: ${MYSQLDB_URL}
+    username: ${MYSQLDB_USER}
+    password: ${MYSQLDB_ROOT_PASSWORD}
+
+  jpa:
+    hibernate:
+      ddl-auto: create
+    defer-datasource-initialization: true
+  sql:
+    init:
+      mode: always
+
+server:
+  port: ${SPRING_DOCKER_PORT}
