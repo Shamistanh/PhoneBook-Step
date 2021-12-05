@@ -2,6 +2,12 @@ FROM maven:3.8.3-jdk-11
 
 WORKDIR /backend
 COPY . .
+
+
+ENV MYSQLDB_URL $MYSQLDB_URL\
+    MYSQLDB_USER $MYSQLDB_USER\
+    MYSQLDB_ROOT_PASSWORD $MYSQLDB_ROOT_PASSWORD
+
 RUN mvn clean install
 
 CMD mvn spring-boot:run
