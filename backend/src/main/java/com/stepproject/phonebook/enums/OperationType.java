@@ -6,5 +6,5 @@ public enum OperationType {
 
     ADD,
 
-    DEELETE;
+    DELETE;
 }

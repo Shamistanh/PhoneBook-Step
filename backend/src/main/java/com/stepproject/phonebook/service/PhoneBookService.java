@@ -75,20 +75,20 @@ public class PhoneBookService {
 
             if (userByIdOptional.isPresent()) {
                 User userDb = userByIdOptional.get();
-                userRepository.save(userDb);
+                userRepository.delete(userDb);
 
-                operation.setOperationType(OperationType.DEELETE);
+                operation.setOperationType(OperationType.DELETE);
                 operation.setOperationStatus(OperationStatus.SUCCESS);
                 operation.setUserId(userId);
                 return operation;
             }
-            operation.setOperationType(OperationType.DEELETE);
+            operation.setOperationType(OperationType.DELETE);
             operation.setOperationStatus(OperationStatus.FAIL);
             return operation;
 
         }catch (Exception exception){
             Operation operation = new Operation();
-            operation.setOperationType(OperationType.DEELETE);
+            operation.setOperationType(OperationType.DELETE);
             operation.setOperationStatus(OperationStatus.FAIL);
             return operation;
         }
