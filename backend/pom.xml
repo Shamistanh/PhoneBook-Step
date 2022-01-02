@@ -16,6 +16,22 @@
     <properties>
         <java.version>11</java.version>
     </properties>
+
+    <profiles>
+        <profile>
+            <id>sonar</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties><!--Optional URL to server. Default value is http://localhost:9000 -->
+                <sonar.host.url>http://localhost:9000/</sonar.host.url>
+                <sonar.login>24a6c6f77578cc0db959b1ad6fd935f466fc2338</sonar.login>
+                <sonar.projectKey>phoneBook</sonar.projectKey>
+            </properties>
+        </profile>
+    </profiles>
+
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
