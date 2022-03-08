@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: ${MYSQLDB_URL}
-    username: ${MYSQLDB_USER}
-    password: ${MYSQLDB_ROOT_PASSWORD}
+    url: ${MYSQLDB_URL:jdbc:mysql://localhost:3306/phonebook_schema}
+    username: ${MYSQLDB_USER:root}
+    password: ${MYSQLDB_ROOT_PASSWORD:sh7513244}
 
   jpa:
     hibernate:
@@ -12,5 +12,4 @@ spring:
     init:
       mode: always
 
-server:
-  port: ${SPRING_DOCKER_PORT}
+
