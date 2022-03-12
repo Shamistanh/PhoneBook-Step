@@ -10,7 +10,6 @@ import static org.mockito.Mockito.verify;
 
 import com.stepproject.phonebook.enums.OperationStatus;
 import com.stepproject.phonebook.enums.OperationType;
-import com.stepproject.phonebook.model.Operation;
 import com.stepproject.phonebook.service.impl.PhoneBookServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.Test;
@@ -19,7 +18,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
