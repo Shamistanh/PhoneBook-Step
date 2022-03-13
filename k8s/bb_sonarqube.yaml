@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: sonarqube-app
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sonarqube-demo
+  namespace: sonarqube-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      bb: web
+  template:
+    metadata:
+      labels:
+        bb: web
+    spec:
+      containers:
+      - name: app-sonarqube
+        image: shamistanhuseynov1999/sonarqube
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: bb-entrypoint-sonarqube
+  namespace: sonarqube-app
+spec:
+  type: NodePort
+  selector:
+    bb: web
+  ports:
+  - port: 9000
+    targetPort: 9000
+    nodePort: 30003

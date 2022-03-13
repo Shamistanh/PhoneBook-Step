@@ -1,0 +1,42 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: front-app
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: front-demo
+  namespace: front-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      bb: web
+  template:
+    metadata:
+      labels:
+        bb: web
+    spec:
+      containers:
+      - name: app-front
+        image: shamistanhuseynov1999/app-front
+        env:
+        - name: BACKEND_URL
+          value: " http://127.0.0.1:57085"
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: bb-entrypoint-front
+  namespace: front-app
+spec:
+  type: NodePort
+  selector:
+    bb: web
+  ports:
+  - port: 80
+    targetPort: 80
+    nodePort: 30002
