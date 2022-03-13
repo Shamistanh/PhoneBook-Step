@@ -1,7 +1,5 @@
 pipeline {
-     agent {
-     docker { image 'node:16.13.1-alpine' }
-     }
+    agent any
     environment{
         PATH = "/opt/apache-maven-3.8.4/bin:$PATH"
         registry = "shamistanhuseynov1999/app-book"
