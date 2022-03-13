@@ -39,8 +39,10 @@ pipeline {
         }
         stage('Update app in k8s') {
             steps {
-                 sh 'kubectl apply -f k8s/bb.yml'
-                  }
-             }
+            script{
+             sh 'kubectl apply -f k8s/bb.yml'
+            }
+           }
+        }
     }
 }
