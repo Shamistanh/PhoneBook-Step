@@ -32,10 +32,15 @@ pipeline {
         stage('Docker push') {
             steps {
                  script {
-                    sh 'docker login -u shamistanhuseynov1999 -p @Sh7513244'
+                    sh 'docker login -u shamistanhuseynov1999 -p test'
                     sh 'docker push  shamistanhuseynov1999/app-book'
                  }
             }
         }
+        stage('Update app in k8s') {
+            steps {
+                 sh 'kubectl apply -f k8s/bb.yml'
+                  }
+             }
     }
 }
