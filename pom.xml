@@ -23,8 +23,13 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties><!--Optional URL to server. Default value is http://localhost:9000 -->
+                <jacoco.report.ut>${project.build.directory}/jacoco-ut.exec</jacoco.report.ut>
+                <jacoco.report.it>${project.build.directory}/jacoco-it.exec</jacoco.report.it>
+
                 <sonar.host.url>http://localhost:9000/</sonar.host.url>
                 <sonar.login>24a6c6f77578cc0db959b1ad6fd935f466fc2338</sonar.login>
+                <sonar.sources>src/main/java</sonar.sources>
+                <sonar.tests>src/test/java</sonar.tests>
                 <sonar.projectKey>phoneBook</sonar.projectKey>
                 <sonar.exclusions>**/dto/**, **/PhoneBookApplication.java, **/model/**, **/repo/**, **/enums/**
                 </sonar.exclusions>
@@ -120,19 +125,27 @@
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.7.7.201606060606</version>
+                <version>0.8.1</version>
                 <executions>
                     <execution>
+                        <id>jacoco-agent-ut</id>
                         <goals>
                             <goal>prepare-agent</goal>
                         </goals>
+                        <configuration>
+                            <destFile>${jacoco.report.ut}</destFile>
+                            <propertyName>surefireArgLine</propertyName>
+                        </configuration>
                     </execution>
                     <execution>
-                        <id>report</id>
-                        <phase>prepare-package</phase>
+                        <id>jacoco-agent-it</id>
                         <goals>
-                            <goal>report</goal>
+                            <goal>prepare-agent-integration</goal>
                         </goals>
+                        <configuration>
+                            <destFile>${jacoco.report.it}</destFile>
+                            <propertyName>failsafeArgLine</propertyName>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
