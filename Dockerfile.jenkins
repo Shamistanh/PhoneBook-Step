@@ -1,3 +1,4 @@
 FROM jenkins/jenkins:lts-jdk11
 USER root
-RUN apt-get update and apt-get install -y docker.io vim
+RUN apt-get update
+RUN apt-get install -y docker.io vim
